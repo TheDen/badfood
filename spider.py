@@ -9,7 +9,7 @@ from geopy.geocoders import Nominatim
 geolocator = Nominatim()
 
 class DineSpider(scrapy.Spider):
-    name = "dine"
+    name = "badfood"
 
     def start_requests(self):
         urls = [
