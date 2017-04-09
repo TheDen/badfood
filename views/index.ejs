@@ -3,7 +3,9 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Simple markers</title>
+    <link rel='shortcut icon' href='images/favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <title>BadFood</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -19,6 +21,13 @@
     </style>
   </head>
 <body>
+<!--  <div style="text-align:center;  position: fixed !important; top: 0; width: 100%; z-index: 10000; height: 50px; bgcolor= white;  display: inline-block; padding-bottom: 5px;"> -->
+<div id="header-wrap">
+    <img src="images/banner.png" alt="BadFood Banner" />
+<!--    <h1 style=" display: inline-block; float: right; padding-bottom: 5px;">GitHub</h1> -->
+   <a style="display: inline-block; float: right;" h href="http://theden.sh" target="_blank">theden.sh</a>
+  </div>
+<!-- <h1 style="text-align: center;"> 😷  bad food </h1> -->
     <div id="map"></div>
     <script
     src=<%= apikey %>>
@@ -44,7 +53,7 @@
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(newdata[i].name+"<br /><a href="+newdata[i].url+">Penalty Details</a><br />Date issued:"+ newdata[i].date);
+          infowindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a href="+newdata[i].url+" target='_blank'>Penalty Details</a><br />Date issued: "+ newdata[i].date);
           infowindow.open(map, marker);
         }
       })(marker, i));

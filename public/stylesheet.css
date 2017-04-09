@@ -1,0 +1,15 @@
+html{
+  font-family: helvetica;
+  }
+
+#header-wrap {
+
+  text-align:center;  
+  position: fixed !important; 
+  top: 0; 
+  width: 100%; 
+  z-index: 10000; 
+//  height: 50px; 
+  display: inline-block; 
+}
+
