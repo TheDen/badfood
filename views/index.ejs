@@ -25,7 +25,8 @@
 <div id="header-wrap">
     <img src="images/banner.png" alt="BadFood Banner" />
 <!--    <h1 style=" display: inline-block; float: right; padding-bottom: 5px;">GitHub</h1> -->
-   <a style="display: inline-block; float: right;" h href="http://theden.sh" target="_blank">theden.sh</a>
+   <a style="display: inline-block; float: right; text-decoration: none;" href="http://theden.sh" target="_blank">✌ theden.sh</a>
+   <a style="display: inline-block; float: left; text-decoration: none;" href="https://github.com/theden/badfood" target="_blank">GitHub</a>
   </div>
 <!-- <h1 style="text-align: center;"> 😷  bad food </h1> -->
     <div id="map"></div>
@@ -39,7 +40,9 @@
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
       center: new google.maps.LatLng(-33.92, 151.25),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: false,
+      streetViewControl: false
     });
 
     var infowindow = new google.maps.InfoWindow();
@@ -47,8 +50,8 @@
     var marker, i;
     for (i = 0; i < newdata.length; i++) {
       marker = new google.maps.Marker({
-    position: new google.maps.LatLng(newdata[i].latlong[0], newdata[i].latlong[1]),
-        map: map
+      position: new google.maps.LatLng(newdata[i].latlong[0], newdata[i].latlong[1]),
+      map: map
       });
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
