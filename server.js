@@ -2,10 +2,8 @@ const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient
 app.set('view engine', 'ejs')
-//var favicon = require('serve-favicon');
 
 app.use(express.static('public'))
-//app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 mongourl = process.env.MONGOURL
 apikey = process.env.APIKEY
