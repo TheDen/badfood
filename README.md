@@ -1,4 +1,4 @@
-# [BadFood.io]((badfood.io))
+# [BadFood.io](http://badfood.io)
 
 
 Shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from [this](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) public penalty notice list.
