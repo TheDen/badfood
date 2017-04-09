@@ -37,6 +37,7 @@ class DineSpider(scrapy.Spider):
        address = response.xpath("//table//td/text()").extract()[3]
        suburb = response.xpath("//table//td/text()").extract()[4]
        date = response.xpath("//table//td/text()").extract()[6]
+       finereason = response.xpath("//table//td/text()").extract()[8]
        latlong = decodeAddressToCoordinates(address+suburb)
        if latlong is None:
          latlong = "Not Found"
@@ -45,7 +46,8 @@ class DineSpider(scrapy.Spider):
                 'address': address+suburb,
                 'date': date, 
                 'url': response.url,
-                'latlong': latlong
+                'latlong': latlong,
+                'finereason': finereason
         }
 
 def decodeAddressToCoordinates( address ):

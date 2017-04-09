@@ -19,4 +19,3 @@ MongoClient.connect(mongourl, (err, database) => {
     console.log('listening on 3000')
   })
 })
-
