@@ -1,7 +1,7 @@
-# [BadFood.io](http://badfood.io)
+[![BadFood](public/images/badfood.png)](http://badfood.io)
 
 
-Shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from [this](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) public penalty notice list.
+[BadFood](http://BadFood.io) shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from [this](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) public penalty notice list.
 
 Data is scraped using a spider with python's `scrapy` and stored in a remote mongodb and served as a NodeJs+Express+EJS on Heroku.
 
