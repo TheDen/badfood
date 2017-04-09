@@ -21,7 +21,8 @@
 <body>
     <div id="map"></div>
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    var gk = <%= apikey %>
+    src="https://maps.googleapis.com/maps/api/js?key="+gk+"&callback=initMap">
     </script>
     <script>
     

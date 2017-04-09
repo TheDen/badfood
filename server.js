@@ -4,6 +4,7 @@ const MongoClient = require('mongodb').MongoClient
 app.set('view engine', 'ejs')
 
 mongourl = process.env.MONGOURL
+apikey = process.env.APIKEY
 
 app.get('/', (req, res) => {
   db.collection('data').find().toArray((err, result) => {
