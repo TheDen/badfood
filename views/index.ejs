@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+<body>
+    <div id="map"></div>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    </script>
+    <script>
+    
+    var newdata =<%-JSON.stringify(data)%>
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(-33.92, 151.25),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+    for (i = 0; i < newdata.length; i++) {
+      marker = new google.maps.Marker({
+    position: new google.maps.LatLng(newdata[i].latlong[0], newdata[i].latlong[1]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(newdata[i].name+"<br /><a href="+newdata[i].url+">Penalty Details</a><br />Date issued:"+ newdata[i].date);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+   </script>
+</body>
+</html>
