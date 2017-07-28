@@ -9,7 +9,7 @@ mongourl = process.env.MONGOURL
 apikey = process.env.APIKEY
 
 app.get('/', (req, res) => {
-  db.collection('data').find().toArray((err, result) => {
+  db.collection('data2').find().toArray((err, result) => {
     if (err) return console.log(err)
     res.render('index.ejs', {data: result})
 })
