@@ -92,8 +92,8 @@
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a href="+newdata[i].url+" target='_blank'>Penalty Details</a><br />Date issued: "+ newdata[i].date);
-          infowindow.open(map, marker);
+          infoWindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a href="+newdata[i].url+" target='_blank'>Penalty Details</a><br />Date issued: "+ newdata[i].date);
+          infoWindow.open(map, marker);
         }
       })(marker, i));
     }
