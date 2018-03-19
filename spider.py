@@ -27,12 +27,11 @@ class DineSpider(scrapy.Spider):
         paths = []
         for i in range(0, len(hrefs)):
           if len(urlparse(hrefs[i]).query) > 0 and re.search('itemId',urlparse(hrefs[i]).query) :
-           paths.append(urlparse(hrefs[i]).query)        
-        
+           paths.append(urlparse(hrefs[i]).query)
         for i in range(0, len(paths)):
             yield scrapy.Request('http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?'+ paths[i], callback=self.parse2)
- 
-    def parse2(self, response): 
+
+    def parse2(self, response):
        name = response.xpath("//table//td/text()").extract()[1]
        address = response.xpath("//table//td/text()").extract()[3]
        suburb = response.xpath("//table//td/text()").extract()[4]
@@ -44,7 +43,7 @@ class DineSpider(scrapy.Spider):
        yield {
                 'name': name,
                 'address': address+suburb,
-                'date': date, 
+                'date': date,
                 'url': response.url,
                 'latlong': latlong,
                 'finereason': finereason
@@ -64,4 +63,4 @@ def decodeAddressToCoordinates( address ):
         if 'status' not in result or result['status'] != 'OK':
                 return None
         else:
-                return result['results'][0]['geometry']['location']['lat'], result['results'][0]['geometry']['location']['lng'] 
+                return result['results'][0]['geometry']['location']['lat'], result['results'][0]['geometry']['location']['lng']
