@@ -7,9 +7,10 @@ app.use(express.static('public'))
 
 mongourl = process.env.MONGOURL
 apikey = process.env.APIKEY
+dbCollection = process.env.DB_COLLECTION
 
 app.get('/', (req, res) => {
-  db.collection('data2').find().toArray((err, result) => {
+  db.collection(dbCollection).find().toArray((err, result) => {
     if (err) return console.log(err)
     res.render('index.ejs', {data: result})
 })
