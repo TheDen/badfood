@@ -5,8 +5,10 @@
     <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square"/></a>
   <a href="https://github.com/TheDen/badfood/blob/master/LICENSE" alt="license">
     <img src="https://img.shields.io/github/license/TheDen/badfood.svg?style=flat-square"/></a>
-  <a href="https://github.com/Flet/semistandard" alt="code style">
+  <a href="https://github.com/Flet/semistandard" alt="code style node">
     <img src="https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square"/></a>
+  <a href="https://github.com/ambv/black" alt="code style python">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square"/></a>
 </p>
 
 ![badfood.io example](badfood.gif)
