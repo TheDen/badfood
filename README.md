@@ -1,43 +1,86 @@
 [![BadFood](public/images/badfood.png)](http://badfood.io)
 
+<p align="center">
+  <a href="https://github.com/TheDen/badfood/issues" alt="contributions welcome">
+    <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg"/></a>
+  <a href="https://github.com/TheDen/badfood/blob/master/LICENSE" alt="license">
+    <img src="https://img.shields.io/github/license/TheDen/badfood.svg"/></a>
+</p>
 
-[BadFood](http://BadFood.io) shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from [this](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) public penalty notice list.
 
-Data is scraped using a spider with python's `scrapy` and stored in a remote mongodb and served as a NodeJs+Express+EJS server on Heroku.
+[BadFood](http://BadFood.io) shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from the public [penalty notice](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) and [prosecutions](http://www.foodauthority.nsw.gov.au/offences/prosecutions) lists.
 
-## Build
+Data is scraped using a spider with python's `scrapy` and stored in a remote `mongo` db—served with NodeJs+Express+EJS on Heroku.
 
-Python's scrapy: `pip install scrapy`
+## Building
 
-Node: `nvm install && npm install`
+### Data Crawler
+Install the python3 requirements
 
-## Run
-
-Crawl the data and output it as JSON, run the spider:
-```scrapy runspider spider.py -o output.json```
-
-Import the data to a remote host:
-
+```bash
+pip install -r requirements.txt
 ```
-mongoimport -h mongohost -d dbname -c collection -u username -p password --file output.json --jsonArray
+
+### Node Server
+
+If you have `nvm` use `nvm install` to install the node version.
+
+Install the dependencies
+
+```bash
+npm install
 ```
 
-Export the google maps API URL (Including the key) as an environment variable (or as a config var on Heroku):
+## Running
 
-`export APIKEY="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=initMap"`
+### Data Crawling
 
-and similarly the mongodb url, for example with `mlab`:
+To crawl the data from the notice list webpage, and store in in JSON format
 
-```export MONGOURL=mongodb://username:password@12345.mlab.com:55491/db```
+```bash
+scrapy runspider spiders/spider_notice_list.py -o notice_list.json
+```
+
+For the prosecutions list
+
+```bash
+scrapy runspider spiders/spider_prosecutions_list.py -o prosecutions_list.json
+```
+
+### Importing data to mongo
+
+To import the data to a remote host:
+
+```bash
+mongoimport -h <mongohost:port> -d <dbname> -c <collection> -u <username> -p <password> --file <file.json> --jsonArray
+```
+
+(leave out the `-p` option to be prompted for the password)
+
+### Running the node webserver
+
+Environment variables needed
+
+* `APIKEY`—The Google maps API URL (including the key), e.g.,
+
+```bash
+export APIKEY="https://maps.googleapis.com/maps/api/js?key=<YOUR_KEY>&callback=initMap"
+```
+* `MONGOURL`—The Mongo database URI, e.g.,
+
+```bash
+export MONGOURL="mongodb://<username>:<password>@<host<:<port>/<database>"
+```
+
+* `DB_COLLECTION`—The mongo collection, e.g.,
+
+```bash
+export DB_COLLECTION="dataset1"
+```
 
 
-## Contribute
 
-* Pull requests are accepted.
+## Contributing
+
+* Issues and pull requests are welcome
 * Thanks to [Deedee lee](http://github.com/deedeedeeps) for the BadFood emoji logo
-
-
-
-
-
-
