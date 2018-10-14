@@ -5,10 +5,9 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
-const mongourl = process.env.MONGOURL;
-const apikey = process.env.APIKEY;
-
-var dbCollection = process.env.DB_COLLECTION;
+global.mongourl = process.env.MONGOURL;
+global.apikey = process.env.APIKEY;
+global.dbCollection = process.env.DB_COLLECTION;
 
 app.get('/', (req, res) => {
   db.collection(dbCollection).find().toArray((err, result) => {
@@ -19,6 +18,6 @@ app.get('/', (req, res) => {
 
 MongoClient.connect(mongourl, (err, database) => {
   if (err) return console.log(err);
-  const db = database;
+  db = database;
   app.listen(process.env.PORT || 5000);
 });
