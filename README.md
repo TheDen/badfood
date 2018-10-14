@@ -8,6 +8,8 @@
 </p>
 
 
+![badfood.io example](badfood.gif)
+
 [BadFood](http://BadFood.io) shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from the public [penalty notice](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) and [prosecutions](http://www.foodauthority.nsw.gov.au/offences/prosecutions) lists.
 
 Data is scraped using a spider with python's `scrapy` and stored in a remote `mongo` db—served with NodeJs+Express+EJS on Heroku.
@@ -78,6 +80,7 @@ export MONGOURL="mongodb://<username>:<password>@<host<:<port>/<database>"
 export DB_COLLECTION="dataset1"
 ```
 
+Then start the server `node server.js`
 
 
 ## Contributing
