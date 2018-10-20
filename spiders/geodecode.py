@@ -10,7 +10,7 @@ import json
 def decodeAddressToCoordinates(address):
 
     if "GOOGLE_API_KEY" in os.environ:
-        google_token = os.environ.get("BUILDKITE_API_TOKEN")
+        google_token = os.environ.get("GOOGLE_API_KEY")
 
     url_params = {"address": address, "sensor": "false"}
     url = (
