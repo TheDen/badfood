@@ -56,7 +56,7 @@
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
-            infoWindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a href="+newdata[i].url+" target='_blank'>Penalty Details</a><br />Date issued: "+ newdata[i].date);
+            infoWindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a href="+newdata[i].url+" target='_blank' rel='noopener'>Penalty Details</a><br />Date issued: "+ newdata[i].date);
             infoWindow.open(map, marker);
           }
         })(marker, i));
