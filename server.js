@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 const { MongoClient } = require('mongodb');
 const uri = process.env.MONGOURL;
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 client.connect(err => {
   db = client.db("badfood")
