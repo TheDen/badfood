@@ -20,6 +20,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 client.connect(err => {
   db = client.db("badfood")
+  client.close()
   app.listen(process.env.PORT || 5000);
 });
 
