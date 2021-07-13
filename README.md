@@ -43,13 +43,13 @@ npm install
 To crawl the data from the notice list webpage, and store in in JSON format
 
 ```bash
-scrapy runspider spiders/spider_notice_list.py -o notice_list.json
+scrapy runspider spiders/spider_notice_list.py -s USER_AGENT='Mozilla/5.0' -o notice_list.json
 ```
 
 For the prosecutions list
 
 ```bash
-scrapy runspider spiders/spider_prosecutions_list.py -o prosecutions_list.json
+scrapy runspider spiders/spider_prosecutions_list.py -s USER_AGENT='Mozilla/5.0' -o prosecutions_list.json
 ```
 
 ### Importing data to mongo
@@ -74,7 +74,7 @@ export APIKEY="https://maps.googleapis.com/maps/api/js?key=<YOUR_KEY>&callback=i
 * `MONGOURL`—The Mongo database URI, e.g.,
 
 ```bash
-export MONGOURL="mongodb://<username>:<password>@<host<:<port>/<database>"
+export MONGOURL="mongodb+srv://<username>:<password>@<host>/<host"
 ```
 
 * `DB_COLLECTION`—The mongo collection, e.g.,
