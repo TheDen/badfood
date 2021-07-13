@@ -49,14 +49,20 @@
       var infoWindow = new google.maps.InfoWindow();
       var marker, i;
       for (i = 0; i < newdata.length; i++) {
+				newdata[i].penalty_amount
+					if (typeof newdata[i].prosecution_amount !== 'undefined') {
+				   	fine = newdata[i].prosecution_amount
+					}
+          if (typeof newdata[i].penalty_amount  !== 'undefined') {
+             fine = newdata[i].penalty_amount
+          }
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(newdata[i].latlong[0], newdata[i].latlong[1]),
           map: map
-        });
-
+              });
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
-            infoWindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a href="+newdata[i].url+" target='_blank' rel='noopener'>Penalty Details</a><br />Date issued: "+ newdata[i].date);
+                  infoWindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a href="+newdata[i].url+" target='_blank' rel='noopener'>Penalty Details</a><br />Date issued: "+ newdata[i].date + "<br />Fine: " + fine);
             infoWindow.open(map, marker);
           }
         })(marker, i));
