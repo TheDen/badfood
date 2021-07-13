@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express();
-const MongoClient = require('mongodb').MongoClient;
 app.set('view engine', 'ejs');
-
 app.use(express.static('public'));
 
-global.mongourl = process.env.MONGOURL;
 global.apikey = process.env.APIKEY;
 global.dbCollection = process.env.DB_COLLECTION;
 
@@ -16,8 +13,13 @@ app.get('/', (req, res) => {
   });
 });
 
-MongoClient.connect(mongourl, (err, database) => {
-  if (err) return console.log(err);
-  db = database;
+
+const { MongoClient } = require('mongodb');
+const uri = process.env.MONGOURL;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+client.connect(err => {
+  db = client.db("badfood")
   app.listen(process.env.PORT || 5000);
 });
+

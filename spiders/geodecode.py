@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 from geopy.geocoders import Nominatim
 
 import urllib.parse

@@ -16,7 +16,7 @@ class Spider(scrapy.Spider):
     name = "badfood"
 
     def start_requests(self):
-        urls = ["http://www.foodauthority.nsw.gov.au/offences/prosecutions"]
+        urls = ["https://www.foodauthority.nsw.gov.au/offences/prosecutions"]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
@@ -35,17 +35,52 @@ class Spider(scrapy.Spider):
             )
 
     def parse2(self, response):
-        name = response.xpath("//table//td/text()").extract()[0]
-        address = "".join(response.xpath("//table//p/text()").extract()[1:4])
-        print(address)
-        date = response.xpath("//table//td/text()").extract()[7]
-        finereason = response.xpath("//table//td/text()").extract()[8]
+        name = (
+            response.css(".field--name-field-prosecution-notice-trade")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        address = (
+            response.css(".field--name-field-prosecution-notice-place")
+            .css(".field__item")
+            .css(".field__item")
+            .xpath("./p")
+            .xpath("./text()")
+            .extract()
+        )
+        council = (
+            response.css(".field--name-field-prosecution-notice-council")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        date = (
+            response.css(".field--name-field-prosecution-notice-date")
+            .css(".field__item")
+            .xpath("./time/@datetime")
+            .extract()[0]
+        )
+        finereason = "".join(
+            response.css(".field--name-field-prosecution-notice-nature")
+            .css(".field__item")
+            .xpath(".//text()")
+            .extract()
+        )
+        prosecution_amount = "".join(
+            response.css(".field--name-field-prosecution-notice-penalty")
+            .css(".field__item")
+            .xpath(".//p")
+            .xpath("./text()")
+            .extract()
+        )
         latlong = geodecode.decodeAddressToCoordinates(address)
         if latlong is None:
             latlong = "Not Found"
         yield {
             "name": name,
             "address": address,
+            "penalty_amount": prosecution_amount,
             "date": date,
             "url": response.url,
             "latlong": latlong,

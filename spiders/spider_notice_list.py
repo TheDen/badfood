@@ -10,9 +10,13 @@ class Spider(scrapy.Spider):
     name = "badfood"
 
     def start_requests(self):
-        urls = [
-            "http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results"
-        ]
+        urls = []
+        for page in range(1, 13):
+            urls.append(
+                "https://www.foodauthority.nsw.gov.au/offences/penalty-notices?s=&page={}".format(
+                    page
+                )
+            )
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
@@ -21,29 +25,73 @@ class Spider(scrapy.Spider):
         paths = []
 
         for i in range(0, len(hrefs)):
-            if len(urllib.parse.urlparse(hrefs[i]).query) > 0 and re.search(
-                "itemId", urllib.parse.urlparse(hrefs[i]).query
-            ):
-                paths.append(urllib.parse.urlparse(hrefs[i]).query)
+            if re.search("/offences/penalty-notices/", hrefs[i]):
+                paths.append(hrefs[i])
         for i in range(0, len(paths)):
             yield scrapy.Request(
-                "http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?"
-                + paths[i],
+                # "http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?"
+                "https://www.foodauthority.nsw.gov.au" + paths[i],
                 callback=self.parse2,
             )
 
     def parse2(self, response):
-        name = response.xpath("//table//td/text()").extract()[1]
-        address = response.xpath("//table//td/text()").extract()[3]
-        suburb = response.xpath("//table//td/text()").extract()[4]
-        date = response.xpath("//table//td/text()").extract()[6]
-        finereason = response.xpath("//table//td/text()").extract()[8]
-        latlong = geodecode.decodeAddressToCoordinates(address + suburb)
+        name = (
+            response.css(".field--name-field-penalty-notice-trade")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        address = (
+            response.css(".field--name-field-penalty-notice-street")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        city = (
+            response.css(".field--name-field-penalty-notice-city")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        zip = (
+            response.css(".field--name-field-penalty-notice-zip")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        council = (
+            response.css(".field--name-field-penalty-notice-council")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        date = (
+            response.css(".field--name-field-penalty-notice-date")
+            .css(".field__item")
+            .xpath("./time/@datetime")
+            .extract()[0]
+        )
+        finereason = (
+            response.css(".field--name-field-penalty-notice-nature")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        penalty_amount = (
+            response.css(".field--name-field-penalty-notice-amount")
+            .css(".field__item")
+            .xpath("./text()")
+            .extract()[0]
+        )
+        latlong = geodecode.decodeAddressToCoordinates(
+            address + council + city + zip,
+        )
         if latlong is None:
             latlong = "Not Found"
         yield {
             "name": name,
-            "address": address + suburb,
+            "address": address + council + city + zip,
+            "penalty_amount": penalty_amount,
             "date": date,
             "url": response.url,
             "latlong": latlong,
