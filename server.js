@@ -15,11 +15,11 @@ app.get('/', (req, res) => {
 
 
 const { MongoClient } = require('mongodb');
+const mongoose = require("mongoose");
 const uri = process.env.MONGOURL;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 client.connect(err => {
   db = client.db("badfood")
-  client.close();
   app.listen(process.env.PORT || 5000);
 });
