@@ -1,4 +1,4 @@
-[![BadFood](badfood.png)](http://badfood.io)
+[![BadFood](images/badfood.png)](http://badfood.io)
 
 <p align="center">
   <a href="https://github.com/TheDen/badfood/issues" alt="contributions welcome">
