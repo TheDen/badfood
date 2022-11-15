@@ -7,11 +7,6 @@ import re
 import scrapy
 import urllib.parse
 
-from geopy.geocoders import Nominatim
-
-geolocator = Nominatim()
-
-
 class Spider(scrapy.Spider):
     name = "badfood"
 

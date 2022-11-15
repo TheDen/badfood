@@ -2,7 +2,7 @@
 export BADFOOD_DATA=$(cat badfood_data.json | jq -c '')
 cat index.pre.html | envsubst > index.html
 
-rsync --exclude=index.pre.html --exclude=sync.sh --exclude=dist/ --exclude=.git/ --exclude=.gitignore --exclude=node_modules --delete -av . dist/
+rsync --exclude=index.pre.html --exclude=sync.sh --exclude=dist/ --exclude=.git/ --exclude=.gitignore --delete -av . dist/
 
 echo "Minifying everything we can"
 find ./dist/ -type f \( \

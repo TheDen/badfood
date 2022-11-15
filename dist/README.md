@@ -1,4 +1,4 @@
-[![BadFood](images/badfood.png)](http://badfood.io)
+[![BadFood](images/badfood.png)](https://badfood.theden.sh)
 
 <p align="center">
   <a href="https://github.com/TheDen/badfood/issues" alt="contributions welcome">
@@ -11,7 +11,7 @@
 
 ![badfood.io example](badfood.gif)
 
-[BadFood](http://BadFood.io) shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from the public [penalty notice](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) and [prosecutions](http://www.foodauthority.nsw.gov.au/offences/prosecutions) lists.
+[BadFood](http://badfood.theden.sh) shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from the public [penalty notice](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) and [prosecutions](http://www.foodauthority.nsw.gov.au/offences/prosecutions) lists.
 
 ## Building
 
@@ -29,13 +29,13 @@ pip install -r requirements.txt
 To crawl the data from the notice list webpage, and store in in JSON format
 
 ```bash
-scrapy runspider spiders/spider_notice_list.py -s USER_AGENT='Mozilla/5.0' -o notice_list.json
+GOOGLE_API_KEY="<YOUR_API_KEY>" scrapy runspider spiders/spider_notice_list.py -s USER_AGENT='Mozilla/5.0' -o notice_list.json
 ```
 
 For the prosecutions list
 
 ```bash
-scrapy runspider spiders/spider_prosecutions_list.py -s USER_AGENT='Mozilla/5.0' -o prosecutions_list.json
+GOOGLE_API_KEY="<YOUR_API_KEY>" scrapy runspider spiders/spider_prosecutions_list.py -s USER_AGENT='Mozilla/5.0' -o prosecutions_list.json
 ```
 
 ## Contributing
