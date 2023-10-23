@@ -629,7 +629,12 @@
                 });
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                    infoWindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a href="+newdata[i].url+" target='_blank' rel='noopener'>Penalty Details</a><br />Date issued: "+ newdata[i].date + "<br />Fine: " + fine);
+              if (newdata[i].date.startsWith(new Date().getFullYear())) {
+                urlPrefix = "href="
+              } else {
+                urlPrefix = "href=https://web.archive.org/web/"
+              }
+              infoWindow.setContent(newdata[i].name+"<br />Reason: "+newdata[i].finereason+"<br /><a " + urlPrefix+newdata[i].url+" target='_blank' rel='noopener'>Penalty Details</a><br />Date issued: "+ newdata[i].date + "<br />Fine: " + fine);
               infoWindow.open(map, marker);
             }
           })(marker, i));
