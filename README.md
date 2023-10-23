@@ -22,7 +22,7 @@
 
 Install the python3 requirements
 
-```bash
+```shell
 pip install -r requirements.txt
 ```
 
@@ -32,13 +32,13 @@ pip install -r requirements.txt
 
 To crawl the data from the notice list webpage, and store in in JSON format
 
-```bash
+```shell
 GOOGLE_API_KEY="<YOUR_API_KEY>" scrapy runspider spiders/spider_notice_list.py -s USER_AGENT='Mozilla/5.0' -o notice_list.json
 ```
 
 For the prosecutions list
 
-```bash
+```shell
 GOOGLE_API_KEY="<YOUR_API_KEY>" scrapy runspider spiders/spider_prosecutions_list.py -s USER_AGENT='Mozilla/5.0' -o prosecutions_list.json
 ```
 
