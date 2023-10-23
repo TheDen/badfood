@@ -3,7 +3,6 @@ export BADFOOD_DATA=$(cat badfood_data.json | jq -c '.')
 cat index.pre.html | envsubst > index.html
 
 rm -rf dist/
-mkdir dist
 rsync \
   --exclude=index.pre.html \
   --exclude=*.sh - \
@@ -13,6 +12,8 @@ rsync \
   --exclude=README.md \
   --exclude=spiders/* \
   --exclude=badfood_data.json \
+  --exclude=requirements.txt \
+  --exclude=images/*.xcf \
   --delete -av . dist/
 
 echo "Minifying everything we can"
