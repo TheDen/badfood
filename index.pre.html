@@ -629,7 +629,7 @@
                 });
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-              if (newdata[i].date.startsWith(new Date().getFullYear())) {
+              if (newdata[i].date.startsWith("2023")) {
                 urlPrefix = "href="
               } else {
                 urlPrefix = "href=https://web.archive.org/web/"
