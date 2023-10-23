@@ -16,6 +16,7 @@
 ## Building
 
 ### Data Crawler
+
 Install the python3 requirements
 
 ```bash
@@ -40,5 +41,5 @@ GOOGLE_API_KEY="<YOUR_API_KEY>" scrapy runspider spiders/spider_prosecutions_lis
 
 ## Contributing
 
-* Issues and pull requests are welcome
-* Thanks to [Deedee lee](http://github.com/deedeedeeps) for the BadFood emoji logo
+- Issues and pull requests are welcome
+- Thanks to [Deedee lee](http://github.com/deedeedeeps) for the BadFood emoji logo
