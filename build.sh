@@ -17,6 +17,8 @@ rsync --exclude=index.pre.html \
   --exclude=images/*.xcf \
   --delete -av . dist/
 
+prettier -w .
+
 echo "Minifying everything we can"
 find ./dist/ -type f \( \
   -name "*.html" \
