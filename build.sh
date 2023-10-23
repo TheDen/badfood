@@ -1,6 +1,7 @@
 #!/bin/bash
-export BADFOOD_DATA=$(cat badfood_data.json | jq -c '.')
-cat index.pre.html | envsubst > index.html
+BADFOOD_DATA=$(cat badfood_data.json | jq -c '.')
+export BADFOOD_DATA
+index.pre.html < envsubst > index.html
 
 rm -rf dist/
 rsync \
@@ -11,6 +12,7 @@ rsync \
   --exclude=LICENSE \
   --exclude=README.md \
   --exclude=spiders/* \
+  --exclude=.prettierignore \
   --exclude=badfood_data.json \
   --exclude=requirements.txt \
   --exclude=images/*.xcf \
