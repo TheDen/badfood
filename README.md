@@ -12,7 +12,6 @@
 [![Prettier](https://img.shields.io/badge/Prettier-%23F7B93E.svg?style=flat-square&logo=prettier&logoColor=black)](https://github.com/prettier/prettier)
 [![Website Status](https://img.shields.io/website?label=badfood.theden.sh&style=flat-square&url=https%3A%2F%2Fbadfood.theden.sh%2F)](https://badfood.theden.sh/)
 
-
 </div>
 
 [BadFood](http://badfood.theden.sh) shows a map of restaurants in Sydney that have been given a penalty from [The Department of Primary Industries Food Authority](http://www.foodauthority.nsw.gov.au/), specifically from the public [penalty notice](http://www.foodauthority.nsw.gov.au/penalty-notices/default.aspx?template=results) and [prosecutions](http://www.foodauthority.nsw.gov.au/offences/prosecutions) lists.
