@@ -1,8 +1,19 @@
 #!/bin/bash
-export BADFOOD_DATA=$(cat badfood_data.json | jq -c '')
+export BADFOOD_DATA=$(cat badfood_data.json | jq -c '.')
 cat index.pre.html | envsubst > index.html
 
-rsync --exclude=index.pre.html --exclude=sync.sh --exclude=dist/ --exclude=.git/ --exclude=.gitignore --delete -av . dist/
+rm -rf dist/
+mkdir dist
+rsync \
+  --exclude=index.pre.html \
+  --exclude=*.sh - \
+  -exclude=dist/ \
+  --exclude=.git* \
+  --exclude=LICENSE \
+  --exclude=README.md \
+  --exclude=spiders/* \
+  --exclude=badfood_data.json \
+  --delete -av . dist/
 
 echo "Minifying everything we can"
 find ./dist/ -type f \( \
@@ -12,7 +23,7 @@ find ./dist/ -type f \( \
   -o -name '*.svg' \
   -o -name "*.xml" \
   -o -name "*.json" \
-  -o -name "*.htm" \
+  -o -name "*.html" \
   \) \
   -and ! -name "*.min*" -print0 |
   xargs -0 -n1 -P4 -I '{}' sh -c 'minify -o "{}" "{}"'
