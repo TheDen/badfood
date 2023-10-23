@@ -1,12 +1,11 @@
 #!/bin/bash
 BADFOOD_DATA=$(cat badfood_data.json | jq -c '.')
 export BADFOOD_DATA
-index.pre.html < envsubst > index.html
+envsubst < index.pre.html > index.html
 
 rm -rf dist/
-rsync \
-  --exclude=index.pre.html \
-  --exclude=*.sh - \
+rsync --exclude=index.pre.html \
+  --exclude=*.sh \
   -exclude=dist/ \
   --exclude=.git* \
   --exclude=LICENSE \
