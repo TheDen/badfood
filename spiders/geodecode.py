@@ -9,7 +9,6 @@ import json
 
 
 def decodeAddressToCoordinates(address):
-
     if "GOOGLE_API_KEY" in os.environ:
         google_token = os.environ.get("GOOGLE_API_KEY")
 

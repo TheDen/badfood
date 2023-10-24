@@ -7,6 +7,7 @@ import re
 import scrapy
 import urllib.parse
 
+
 class Spider(scrapy.Spider):
     name = "badfood"
 
