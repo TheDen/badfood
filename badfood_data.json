@@ -82,7 +82,7 @@
   },
   {
     "name": "8OZ CAFE",
-    "address": "TOWER B, 15 ALBION STREETCity of SydneySURRY HILLS2010",
+    "address": "TOWER B, 15 ALBION STREET City of Sydney SURRY HILLS 2010",
     "penalty_amount": "$880.00",
     "date": "2022-11-15T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7250595056",
@@ -1292,29 +1292,29 @@
   },
   {
     "name": "CAFE TALK NEPALESE RESTAURANT",
-    "address": "183-183A BEAMISH STREETCanterbury-BankstownCAMPSIE2194",
+    "address": "183-183A BEAMISH STREET Canterbury-Bankstown CAMPSIE 2194",
     "penalty_amount": "$880.00",
     "date": "2023-02-05T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682202716",
-    "latlong": [54.8755707, -1.6454086],
+    "latlong": [-33.9095705, 151.1038069],
     "finereason": "Fail to maintain the food premises to the required standard of cleanliness - previous warnings given"
   },
   {
     "name": "CAFE TALK NEPALESE RESTAURANT",
-    "address": "183-183A BEAMISH STREETCanterbury-BankstownCAMPSIE2194",
+    "address": "183-183A BEAMISH STREET Canterbury-Bankstown CAMPSIE 2194",
     "penalty_amount": "$880.00",
     "date": "2023-02-05T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682202725",
-    "latlong": [54.8755707, -1.6454086],
+    "latlong": [-33.9095705, 151.1038069],
     "finereason": "Fail to maintain all fixtures, fittings and equipment to the required standard of cleanliness - previous warnings given"
   },
   {
     "name": "CAFE TALK NEPALESE RESTAURANT",
-    "address": "183-183A BEAMISH STREETCanterbury-BankstownCAMPSIE2194",
+    "address": "183-183A BEAMISH STREET Canterbury-Bankstown CAMPSIE 2194",
     "penalty_amount": "$880.00",
     "date": "2023-02-05T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682202734",
-    "latlong": [54.8755707, -1.6454086],
+    "latlong": [-33.9095705, 151.1038069],
     "finereason": "Fail to store food in such a way that it is protected from the likelihood of contamination - previous warnings given"
   },
   {
@@ -2097,20 +2097,20 @@
   },
   {
     "name": "DAMEE CHAOWEI RESTAURANT",
-    "address": "SHOP 1, 234 BEAMISH STREETCanterbury-BankstownCAMPSIE2194",
+    "address": "SHOP 1, 234 BEAMISH STREET Canterbury Bankstown CAMPSIE 2194",
     "penalty_amount": "$880.00",
     "date": "2023-05-14T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682202981",
-    "latlong": [54.8847523, -1.6593206],
+    "latlong": [-33.9124914, 151.1035962],
     "finereason": "Fail to maintain at or near each hand washing facility a supply of - warm running water"
   },
   {
     "name": "DAMEE CHAOWEI RESTAURANT",
-    "address": "SHOP 1, 234 BEAMISH STREETCanterbury-BankstownCAMPSIE2194",
+    "address": "SHOP 1, 234 BEAMISH STREET Canterbury Bankstown CAMPSIE 2194",
     "penalty_amount": "$880.00",
     "date": "2023-05-14T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682202990",
-    "latlong": [54.8847523, -1.6593206],
+    "latlong": [-33.9124914, 151.1035962],
     "finereason": "Fail to ensure food contact surfaces of equipment is in a clean and sanitary condition"
   },
   {
@@ -7006,11 +7006,11 @@
   },
   {
     "name": "PAPA ROMA PIZZERIA",
-    "address": "SHOP 1, 148 CURLEWIS STREETWaverleyBONDI BEACH2026",
+    "address": "SHOP 1, 148 CURLEWIS STREET Waverley BONDI BEACH 2026",
     "penalty_amount": "$330.00",
     "date": "2023-05-29T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/3226065985",
-    "latlong": [-38.1734479, 144.5428901],
+    "latlong": [-33.8892314, 151.2751473],
     "finereason": "Fail to ensure that at least one food safety supervisor has been appointed for the premises"
   },
   {
@@ -7019,7 +7019,7 @@
     "penalty_amount": "$440.00",
     "date": "2023-05-10T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/3226065994",
-    "latlong": [-38.1734479, 144.5428901],
+    "latlong": [-33.8892314, 151.2751473],
     "finereason": "Fail to store food in such a way that it is protected from the likelihood of contamination"
   },
   {
@@ -7330,11 +7330,11 @@
   },
   {
     "name": "PHO HA NOI QUAN",
-    "address": "SHOP 2, 94 BEAMISH STREETCanterbury-BankstownCAMPSIE2194",
+    "address": "SHOP 2, 94 BEAMISH STREET Canterbury Bankstown CAMPSIE 2194",
     "penalty_amount": "$880.00",
     "date": "2022-11-09T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7681918274",
-    "latlong": [54.8847523, -1.6593206],
+    "latlong": [-33.9073779, 151.1029603],
     "finereason": "Fail to ensure the business only accepts food that is protected from the likelihood of contamination - previous warnings given"
   },
   {
@@ -7501,11 +7501,11 @@
   },
   {
     "name": "PIZZA HUT",
-    "address": "3/127 POPONDETTA ROADBlacktownEMERTON2770",
+    "address": "3/127 POPONDETTA ROAD Blacktown EMERTON, 2770",
     "penalty_amount": "$440.00",
     "date": "2023-04-02T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/3120321344",
-    "latlong": [-8.7613025, 148.2377126],
+    "latlong": [-33.7451993, 150.8101932],
     "finereason": "Fail to maintain the food premises to the required standard of cleanliness"
   },
   {
@@ -7717,29 +7717,29 @@
   },
   {
     "name": "R-HAAN THAI",
-    "address": "SHOP 14, 19 MARCO AVENUECanterbury-BankstownREVESBY2212",
+    "address": "14/27-29 Marco Ave, Revesby NSW 2212",
     "penalty_amount": "$880.00",
     "date": "2022-03-30T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/3236842979",
-    "latlong": [-33.9518627, 151.0137502],
+    "latlong": [-33.9520748, 151.0129983],
     "finereason": "Fail to maintain the food premises to the required standard of cleanliness - previous warnings given"
   },
   {
     "name": "R-HAAN THAI",
-    "address": "SHOP 14, 19-29 MARCO AVENUECanterbury-BankstownREVESBY2212",
+    "address": "14/27-29 Marco Ave, Revesby NSW 2212",
     "penalty_amount": "$880.00",
     "date": "2022-12-07T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7681918430",
-    "latlong": [-0.0021797, 37.0792295],
+    "latlong": [-33.9520748, 151.0129983],
     "finereason": "Fail to maintain the food premises to the required standard of cleanliness - previous warnings given"
   },
   {
     "name": "R-HAAN THAI",
-    "address": "SHOP 14, 19-29 MARCO AVENUECanterbury-BankstownREVESBY2212",
+    "address": "14/27-29 Marco Ave, Revesby NSW 2212",
     "penalty_amount": "$880.00",
     "date": "2022-12-07T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7681918449",
-    "latlong": [-0.0021797, 37.0792295],
+    "latlong": [-33.9520748, 151.0129983],
     "finereason": "Fail to maintain all fixtures, fittings and equipment to the required standard of cleanliness - previous warnings given"
   },
   {
@@ -10732,11 +10732,11 @@
   },
   {
     "name": "YUMMY KING BBQ KITCHEN",
-    "address": "164 BEAMISH STREETCanterbury-BankstownCAMPSIE2194",
+    "address": "164 BEAMISH STREET Canterbury, Bankstown, CAMPSIE, 2194",
     "penalty_amount": "$880.00",
     "date": "2022-12-14T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682030153",
-    "latlong": "Not Found",
+    "latlong": [-33.9096645, 151.1031443],
     "finereason": "Fail to display potentially hazardous food under temperature control - previous warnings given"
   },
   {
@@ -10745,7 +10745,7 @@
     "penalty_amount": "$880.00",
     "date": "2022-12-14T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682030162",
-    "latlong": "Not Found",
+    "latlong": [-33.9096645, 151.1031443],
     "finereason": "Fail to maintain easily accessible hand washing facilities on the food premises - previous warnings given"
   },
   {
@@ -10754,7 +10754,7 @@
     "penalty_amount": "$880.00",
     "date": "2022-12-14T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682030171",
-    "latlong": "Not Found",
+    "latlong": [-33.9096645, 151.1031443],
     "finereason": "Fail to store food in such a way that it is protected from the likelihood of contamination - previous warnings given"
   },
   {
@@ -10763,7 +10763,7 @@
     "penalty_amount": "$880.00",
     "date": "2022-12-14T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682030180",
-    "latlong": "Not Found",
+    "latlong": [-33.9096645, 151.1031443],
     "finereason": "Fail to, when displaying food, take all practicable measures to protect the food from the likelihood of contamination - previous warnings given"
   },
   {
@@ -10772,7 +10772,7 @@
     "penalty_amount": "$880.00",
     "date": "2022-12-14T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682030190",
-    "latlong": "Not Found",
+    "latlong": [-33.9096645, 151.1031443],
     "finereason": "Fail to maintain all fixtures, fittings and equipment to the required standard of cleanliness - previous warnings given"
   },
   {
@@ -10781,7 +10781,7 @@
     "penalty_amount": "$880.00",
     "date": "2022-12-14T12:00:00Z",
     "url": "https://www.foodauthority.nsw.gov.au/offences/penalty-notices/7682030209",
-    "latlong": "Not Found",
+    "latlong": [-33.9096645, 151.1031443],
     "finereason": "Fail to maintain the food premises to the required standard of cleanliness - previous warnings given"
   },
   {
