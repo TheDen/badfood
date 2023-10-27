@@ -84,13 +84,13 @@ class Spider(scrapy.Spider):
             .extract()[0]
         )
         latlong = geodecode.decodeAddressToCoordinates(
-            address + council + city + zip,
+            f"{address} {council} {city} {zip}"
         )
         if latlong is None:
             latlong = "Not Found"
         yield {
             "name": name,
-            "address": address + council + city + zip,
+            "address": f"{address} {council} {city} {zip}",
             "penalty_amount": penalty_amount,
             "date": date,
             "url": response.url,
