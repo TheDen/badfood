@@ -1,2 +1,2 @@
 geopy==2.2.0
-Scrapy==2.7.1
+Scrapy==2.11.1
