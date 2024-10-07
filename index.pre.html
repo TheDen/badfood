@@ -655,7 +655,8 @@
       resultPopup.style = `
       position: fixed;
       font-weight: 400;
-      bottom: 4.1em;
+      bottom: 5em;
+      font-size: small;
       border-radius: 6px;
       width: 300px;
       background-color: white;
@@ -693,10 +694,12 @@
             }
 
               // Construct popup content
-              let popupContent = `<b>${newdata[i].name}</b><br />
-                                  Reason: ${newdata[i].finereason}<br />
-                                  <a href="${newdata[i].url}" target="_blank" rel="noopener">Penalty Details</a><br />
-                                  Date issued: ${newdata[i].date}<br />Fine: ${newdata[i].penalty_amount || newdata[i].prosecution_amount || "N/A"}`;
+            let popupContent = `<span style="font-size: medium;"<b>${newdata[i].name}</b></span><br />
+                                  <b>Reason</b>: ${newdata[i].finereason}<br />
+                                  <b>Fine</b>: ${newdata[i].penalty_amount || newdata[i].prosecution_amount || "N/A"}<br />
+                                  <b>Address</b>: ${newdata[i].address}<br />
+                                  <b>Date issued</b>: ${newdata[i].date}<br />
+                                  <a href="${newdata[i].url}" target="_blank" rel="noopener">Penalty Details</a><br />`;
 
               // Bind popup to marker
             if (typeof(marker) !== 'undefined') {
