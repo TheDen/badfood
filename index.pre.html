@@ -595,6 +595,16 @@
       #map {
         height: 100%;
       }
+      ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+      }
 
       html,
       body {
@@ -605,21 +615,6 @@
     </style>
   </head>
   <body>
-    <div id="search-bar">
-      <input
-        type="text"
-        id="restaurantSearch"
-        placeholder="Search for a restaurant"
-        style="
-          width: 300px;
-          padding: 5px;
-          font-size: 16px;
-          border-width: 0px;
-          border-radius: 5px;
-        "
-      />
-    </div>
-    <div id="map"></div>
     <div id="stars">
       <a
         class="github-button"
@@ -630,72 +625,115 @@
         >Star</a
       >
     </div>
+    <div id="search-bar">
+      <input
+        type="text"
+        id="restaurantSearch"
+        placeholder="Search for a restaurant 🍕"
+        style="
+          width: 300px;
+          padding: 5px;
+          font-size: 16px;
+          border-width: 0px;
+          border-radius: 5px;
+        "
+      />
+    </div>
     <div id="img-wrap">
       <img src="images/banner.webp" alt="BadFood Banner" />
     </div>
     <div id="map"></div>
 
     <script>
-            newdata = ${BADFOOD_DATA};
+      newdata = ${BADFOOD_DATA};
 
       let markers = []; // To store markers
+
+      // Create a popup div for the search results
+      const resultPopup = document.createElement("div");
+      resultPopup.id = "result-popup";
+      resultPopup.style = `
+      position: fixed;
+      font-weight: 400;
+      bottom: 4.1em;
+      border-radius: 6px;
+      width: 300px;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      max-height: 15em;
+      overflow-y: auto;
+      z-index: 10001;
+      left: 50%;
+      transform: translateX(-50%);
+      `;
+      document.body.appendChild(resultPopup);
 
       // Check if newdata is defined and an array
       if (Array.isArray(newdata) && newdata.length > 0) {
 
-        // Initialize the map
-        var map = L.map('map').setView([-33.92, 151.25], 10);
+          // Initialize the map
+          var map = L.map('map').setView([-33.92, 151.25], 10);
 
-        // Add OpenStreetMap tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+          // Add OpenStreetMap tile layer
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
 
-        // Loop through the data to create markers
-        for (var i = 0; i < newdata.length; i++) {
-          let fine = newdata[i].penalty_amount || newdata[i].prosecution_amount || "N/A";
+          // Loop through the data to create markers
+          for (var i = 0; i < newdata.length; i++) {
 
-          // Validate latitude and longitude
-          let lat = newdata[i].latlong[0];
-          let lng = newdata[i].latlong[1];
+            // Validate latitude and longitude
+            let lat = newdata[i].latlong[0];
+            let lng = newdata[i].latlong[1];
 
-          if (typeof lat === 'number' && typeof lng === 'number') {
-            // Create marker
-            var marker = L.marker([lat, lng]);
-
-            // Construct popup content
-            let urlPrefix = newdata[i].date.startsWith("2023") ? "" : "https://web.archive.org/web/";
-            let popupContent = `<b>${newdata[i].name}</b><br />
-                                Reason: ${newdata[i].finereason}<br />
-                                <a href="${urlPrefix}${newdata[i].url}" target="_blank" rel="noopener">Penalty Details</a><br />
-                                Date issued: ${newdata[i].date}<br />Fine: ${fine}`;
-
-            // Bind popup to marker
-            marker.bindPopup(popupContent);
-
-            // Add the marker to the map and store in the markers array
-            marker.addTo(map);
-            markers.push({ marker, name: newdata[i].name.toLowerCase() });
-          } else {
-            console.warn(`Invalid lat/lng for entry: ${newdata[i].name}`);
-          }
-        }
-
-        // Search bar functionality
-        const searchInput = document.getElementById("restaurantSearch");
-        searchInput.addEventListener("input", function () {
-          const query = searchInput.value.toLowerCase();
-          markers.forEach(({ marker, name }) => {
-            // Check if the restaurant name includes the search query
-            if (name.includes(query)) {
-              // Show the marker
-              marker.addTo(map);
-            } else {
-              // Remove the marker from the map
-              map.removeLayer(marker);
+            if (typeof lat === 'number' && typeof lng === 'number') {
+              // Create marker
+              var marker = L.marker([lat, lng]);
             }
+
+              // Construct popup content
+              let popupContent = `<b>${newdata[i].name}</b><br />
+                                  Reason: ${newdata[i].finereason}<br />
+                                  <a href="${newdata[i].url}" target="_blank" rel="noopener">Penalty Details</a><br />
+                                  Date issued: ${newdata[i].date}<br />Fine: ${newdata[i].penalty_amount || newdata[i].prosecution_amount || "N/A"}`;
+
+              // Bind popup to marker
+            if (typeof(marker) !== 'undefined') {
+              marker.bindPopup(popupContent);
+
+              // Add the marker to the map and store in the markers array
+              marker.addTo(map);
+              markers.push({ marker, name: newdata[i].name.toLowerCase(), popupContent });
+            }
+          }
+
+          // Function to render the list of restaurants in the popup
+          function renderPopupList(matchingResults) {
+            resultPopup.innerHTML = matchingResults.join("<hr />");
+          }
+
+          // Display all restaurants by default
+          renderPopupList(markers.map(({ popupContent }) => popupContent));
+
+          // Search bar functionality
+          const searchInput = document.getElementById("restaurantSearch");
+          searchInput.addEventListener("input", function () {
+            const query = searchInput.value.toLowerCase();
+            let matchingResults = [];
+
+            markers.forEach(({ marker, name, popupContent }) => {
+              if (name.includes(query)) {
+                marker.addTo(map);
+                matchingResults.push(popupContent);
+              } else {
+                map.removeLayer(marker);
+              }
+            });
+
+            // Update popup with matching results or show all if search is empty
+            renderPopupList(matchingResults.length > 0 ? matchingResults : markers.map(({ popupContent }) => popupContent));
           });
-        });
 
       } else {
         console.error("No valid data found to display on the map.");
