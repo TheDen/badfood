@@ -13,9 +13,9 @@
     <!-- Leaflet CSS and JS -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://badfood.theden.sh" />
@@ -80,32 +80,47 @@
     <div id="map"></div>
 
     <script>
-      var newdata = ${BADFOOD_DATA};
+      newdata = ${BADFOOD_DATA};
 
-      // Initialize the map
-      var map = L.map('map').setView([-33.92, 151.25], 10);
+        // Check if newdata is defined and an array
+      if (Array.isArray(newdata) && newdata.length > 0) {
 
-      // Add OpenStreetMap tile layer
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
+        // Initialize the map
+        var map = L.map('map').setView([-33.92, 151.25], 10);
 
-      // Loop through the data to create markers
-      for (var i = 0; i < newdata.length; i++) {
-        let fine = newdata[i].penalty_amount || newdata[i].prosecution_amount || "N/A";
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-        // Create marker
-        var marker = L.marker([newdata[i].latlong[0], newdata[i].latlong[1]]).addTo(map);
+        // Loop through the data to create markers
+        for (var i = 0; i < newdata.length; i++) {
+          let fine = newdata[i].penalty_amount || newdata[i].prosecution_amount || "N/A";
 
-        // Construct popup content
-        let urlPrefix = newdata[i].date.startsWith("2023") ? "" : "https://web.archive.org/web/";
-        let popupContent = `<b>${newdata[i].name}</b><br />
-                            Reason: ${newdata[i].finereason}<br />
-                            <a href="${urlPrefix}${newdata[i].url}" target="_blank" rel="noopener">Penalty Details</a><br />
-                            Date issued: ${newdata[i].date}<br />Fine: ${fine}`;
+          // Validate latitude and longitude
+          let lat = newdata[i].latlong[0];
+          let lng = newdata[i].latlong[1];
 
-        // Bind popup to marker
-        marker.bindPopup(popupContent);
+          if (typeof lat === 'number' && typeof lng === 'number') {
+            // Create marker
+            var marker = L.marker([lat, lng]).addTo(map);
+
+            // Construct popup content
+            let urlPrefix = newdata[i].date.startsWith("2023") ? "" : "https://web.archive.org/web/";
+            let popupContent = `<b>${newdata[i].name}</b><br />
+                                Reason: ${newdata[i].finereason}<br />
+                                <a href="${urlPrefix}${newdata[i].url}" target="_blank" rel="noopener">Penalty Details</a><br />
+                                Date issued: ${newdata[i].date}<br />Fine: ${fine}`;
+
+            // Bind popup to marker
+            marker.bindPopup(popupContent);
+          } else {
+            console.warn(`Invalid lat/lng for entry: ${newdata[i].name}`);
+          }
+        }
+
+      } else {
+        console.error("No valid data found to display on the map.");
       }
     </script>
   </body>
