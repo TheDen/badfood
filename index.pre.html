@@ -557,6 +557,15 @@
         padding-top: 2em;
       }
 
+      #search-bar {
+        text-align: center;
+        position: fixed !important;
+        bottom: 0;
+        width: 100%;
+        z-index: 10000;
+        padding: 10px 0;
+        padding-bottom: 2em;
+      }
       #img-wrap {
         position: fixed !important;
         top: 10px;
@@ -596,6 +605,21 @@
     </style>
   </head>
   <body>
+    <div id="search-bar">
+      <input
+        type="text"
+        id="restaurantSearch"
+        placeholder="Search for a restaurant"
+        style="
+          width: 300px;
+          padding: 5px;
+          font-size: 16px;
+          border-width: 0px;
+          border-radius: 5px;
+        "
+      />
+    </div>
+    <div id="map"></div>
     <div id="stars">
       <a
         class="github-button"
@@ -612,9 +636,11 @@
     <div id="map"></div>
 
     <script>
-      newdata = ${BADFOOD_DATA};
+            newdata = ${BADFOOD_DATA};
 
-        // Check if newdata is defined and an array
+      let markers = []; // To store markers
+
+      // Check if newdata is defined and an array
       if (Array.isArray(newdata) && newdata.length > 0) {
 
         // Initialize the map
@@ -635,7 +661,7 @@
 
           if (typeof lat === 'number' && typeof lng === 'number') {
             // Create marker
-            var marker = L.marker([lat, lng]).addTo(map);
+            var marker = L.marker([lat, lng]);
 
             // Construct popup content
             let urlPrefix = newdata[i].date.startsWith("2023") ? "" : "https://web.archive.org/web/";
@@ -646,10 +672,30 @@
 
             // Bind popup to marker
             marker.bindPopup(popupContent);
+
+            // Add the marker to the map and store in the markers array
+            marker.addTo(map);
+            markers.push({ marker, name: newdata[i].name.toLowerCase() });
           } else {
             console.warn(`Invalid lat/lng for entry: ${newdata[i].name}`);
           }
         }
+
+        // Search bar functionality
+        const searchInput = document.getElementById("restaurantSearch");
+        searchInput.addEventListener("input", function () {
+          const query = searchInput.value.toLowerCase();
+          markers.forEach(({ marker, name }) => {
+            // Check if the restaurant name includes the search query
+            if (name.includes(query)) {
+              // Show the marker
+              marker.addTo(map);
+            } else {
+              // Remove the marker from the map
+              map.removeLayer(marker);
+            }
+          });
+        });
 
       } else {
         console.error("No valid data found to display on the map.");
